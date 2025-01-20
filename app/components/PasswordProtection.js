@@ -26,7 +26,7 @@ export default function PasswordProtection({ children }) {
       setError('Incorrect password');
     }
   }
-  
+
   if (loading) {
     return <div>Loading...</div>;
   }
@@ -35,14 +35,14 @@ export default function PasswordProtection({ children }) {
     return (
       <div className="min-h-screen bg-gray-100 flex items-center justify-center">
         <div className="bg-white p-8 rounded-lg shadow-md w-full max-w-sm mx-4">
-          <h1 className="text-2xl font-bold mb-6">Enter Password</h1>
+          <h1 className="text-2xl font-bold mb-6 text-gray-900">Enter Password</h1>
           <form onSubmit={handleSubmit}>
             <div className="mb-4">
               <input
                 type="password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                className="w-full p-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="w-full p-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-900"
                 placeholder="Enter secret password"
               />
             </div>
