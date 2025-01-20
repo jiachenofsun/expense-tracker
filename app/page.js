@@ -24,7 +24,6 @@ async function addExpense(formData) {
     date: new Date()
   });
 
-  // After successful insertion, redirect to view page
   redirect('/view');
 }
 

@@ -1,4 +1,5 @@
 import { connectToDatabase } from '@/app/lib/mongodb';
+import { deleteExpense } from '../lib/actions';
 import Link from 'next/link';
 
 const TOTAL_FUNDS_AVAILABLE = 2000;
@@ -72,6 +73,9 @@ export default async function ViewExpenses() {
                   <th className="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">
                     Amount
                   </th>
+                  <th className="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">
+                    
+                  </th>
                 </tr>
               </thead>
               <tbody className="bg-white divide-y divide-gray-200">
@@ -88,6 +92,17 @@ export default async function ViewExpenses() {
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900 text-right">
                       ${expense.amount.toFixed(2)}
+                    </td>
+                    <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+                      <form action={deleteExpense}>
+                        <input type="hidden" name="id" value={expense._id.toString()} />
+                        <button 
+                          type="submit"
+                          className="text-red-600 hover:text-red-900"
+                        >
+                          Delete
+                        </button>
+                      </form>
                     </td>
                   </tr>
                 ))}
