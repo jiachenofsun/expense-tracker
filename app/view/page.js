@@ -3,6 +3,8 @@ import Link from 'next/link';
 
 const TOTAL_FUNDS_AVAILABLE = 2000;
 
+export const dynamic = 'force-dynamic' 
+
 export default async function ViewExpenses() {
   const client = await connectToDatabase();
   const db = client.db('expense_tracker');
