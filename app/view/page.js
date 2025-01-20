@@ -46,7 +46,7 @@ export default async function ViewExpenses() {
             </div>
           </div>
           <div className="flex justify-between items-center mb-6">
-            <h1 className="text-2xl font-bold">Expenses</h1>
+            <h1 className="text-2xl font-bold text-gray-900">Expenses</h1>
             <Link
               href="/"
               className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
