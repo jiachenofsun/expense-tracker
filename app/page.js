@@ -13,6 +13,7 @@ async function addExpense(formData) {
   const name = formData.get('name');
   const description = formData.get('description');
   const amount = formData.get('amount');
+  const date = formData.get('date') || new Date().toLocaleDateString('en-CA');
 
   if (!name || !description || !amount) {
     throw new Error('All fields are required');
@@ -22,7 +23,7 @@ async function addExpense(formData) {
     name,
     description,
     amount: parseFloat(amount),
-    date: new Date()
+    date: date
   });
 
   redirect('/view');
@@ -71,13 +72,25 @@ export default function Home() {
                   className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 text-gray-900"
                 />
               </div>
-                <SubmitButton />
-                <Link
-                  href="/view"
-                  className="text-blue-500 hover:text-blue-600"
-                >
-                  View Expenses
-                </Link>
+              <div className="mb-4">
+                <label htmlFor="date" className="block text-sm font-medium text-gray-700">
+                  Date
+                </label>
+                <input
+                  type="date"
+                  id="date"
+                  name="date"
+                  defaultValue={new Date().toLocaleDateString('en-CA')}
+                  className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                />
+              </div>
+              <SubmitButton />
+              <Link
+                href="/view"
+                className="text-blue-500 hover:text-blue-600"
+              >
+                View Expenses
+              </Link>
             </form>
           </div>
         </div>
