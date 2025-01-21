@@ -1,5 +1,6 @@
 import { redirect } from 'next/navigation';
 import { connectToDatabase } from '@/app/lib/mongodb';
+import SubmitButton from './components/SubmitButton';
 import Link from 'next/link';
 
 // Server action for adding expenses
@@ -70,12 +71,7 @@ export default function Home() {
                   className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 text-gray-900"
                 />
               </div>
-                <button
-                  type="submit"
-                  className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
-                >
-                  Add Expense
-                </button>
+                <SubmitButton />
                 <Link
                   href="/view"
                   className="text-blue-500 hover:text-blue-600"
