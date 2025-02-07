@@ -2,7 +2,7 @@ import { connectToDatabase } from '@/app/lib/mongodb';
 import { deleteExpense } from '../lib/actions';
 import Link from 'next/link';
 
-const TOTAL_FUNDS_AVAILABLE = 2000;
+const TOTAL_FUNDS_AVAILABLE = 2750;
 
 export const dynamic = 'force-dynamic' 
 
