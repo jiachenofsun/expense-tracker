@@ -1,10 +1,26 @@
 import { connectToDatabase } from '@/app/lib/mongodb';
 import { deleteExpense } from '../lib/actions';
 import Link from 'next/link';
+import { ObjectId } from 'mongodb';
+import ReimbursedCheckbox from '../components/ReimbursedCheckbox';
 
 const TOTAL_FUNDS_AVAILABLE = 2750;
 
 export const dynamic = 'force-dynamic' 
+
+async function toggleReimbursed(formData) {
+  'use server';
+  const expenseId = formData.get('expenseId');
+  const currentState = formData.get('currentState') === 'true';
+  
+  const client = await connectToDatabase();
+  const db = client.db('expense_tracker');
+  
+  await db.collection('expenses').updateOne(
+    { _id: new ObjectId(String(expenseId)) },
+    { $set: { reimbursed: !currentState } }
+  );
+}
 
 export default async function ViewExpenses() {
   const client = await connectToDatabase();
@@ -74,7 +90,10 @@ export default async function ViewExpenses() {
                     Amount
                   </th>
                   <th className="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">
-                    
+                    Delete
+                  </th>
+                  <th className="py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                    Reimbursed
                   </th>
                 </tr>
               </thead>
@@ -103,6 +122,13 @@ export default async function ViewExpenses() {
                           Delete
                         </button>
                       </form>
+                    </td>
+                    <td className="px-6 py-4">
+                      <ReimbursedCheckbox 
+                        expenseId={expense._id.toString()} 
+                        initialState={expense.reimbursed}
+                        onToggle={toggleReimbursed}
+                      />
                     </td>
                   </tr>
                 ))}
