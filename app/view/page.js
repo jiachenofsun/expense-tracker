@@ -126,7 +126,7 @@ export default async function ViewExpenses() {
                     <td className="px-6 py-4">
                       <ReimbursedCheckbox 
                         expenseId={expense._id.toString()} 
-                        initialState={expense.reimbursed}
+                        initialState={expense.reimbursed ? expense.reimbursed: false}
                         onToggle={toggleReimbursed}
                       />
                     </td>

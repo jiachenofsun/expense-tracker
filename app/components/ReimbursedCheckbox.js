@@ -5,11 +5,11 @@ export default function ReimbursedCheckbox({ expenseId, initialState, onToggle }
   const [isChecked, setIsChecked] = useState(initialState);
 
   const handleChange = async (e) => {
-    setIsChecked(!isChecked);
     const formData = new FormData();
     formData.append('expenseId', expenseId);
     formData.append('currentState', isChecked.toString());
     await onToggle(formData);
+    setIsChecked(!isChecked);
   };
 
   return (
