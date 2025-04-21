@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { ObjectId } from 'mongodb';
 import ReimbursedCheckbox from '../components/ReimbursedCheckbox';
 
-const TOTAL_FUNDS_AVAILABLE = 2750;
+const TOTAL_FUNDS_AVAILABLE = 2950;
 
 export const dynamic = 'force-dynamic' 
 
